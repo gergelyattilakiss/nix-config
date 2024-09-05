@@ -95,8 +95,7 @@
       vim
       wget
       curl
-      inputs.helix.packages."${pkgs.system}".helix
-    ];
+      ];
   };
 
   # Install firefox.

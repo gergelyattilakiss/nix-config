@@ -50,7 +50,6 @@
     fishPlugins.forgit
     fishPlugins.hydro
     fishPlugins.grc
-    fishPlugins.tide
     grc
 
     # networking tools
@@ -140,13 +139,12 @@
 	set fish_greeting 
    '';
     plugins = [
-	{name = "grc"; src = pkgs.fishPlugins.grc.src; };
-	{name = "done"; src = pkgs.fishPlugins.done.src;};
-	{name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src;};
-	{name = "forgit"; src = pkgs.fishPlugins.forgit.src;};
-	{name = "hydro"; src = pkgs.fishPlugins.hydro.src;};
-	{name = "tide"; src = pkgs.fishPlugins.tide.src;};
-    ]
+	{name = "grc"; src = pkgs.fishPlugins.grc.src; } 
+	{name = "done"; src = pkgs.fishPlugins.done.src;} 
+	{name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src;} 
+	{name = "forgit"; src = pkgs.fishPlugins.forgit.src;} 
+	{name = "hydro"; src = pkgs.fishPlugins.hydro.src;} 
+    ];
   };
 
   programs.bash = {
@@ -156,13 +154,6 @@
     bashrcExtra = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
     '';
-    interactiveShellInit = ''
-    if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-    then
-      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-    fi
-  '';
     # set some aliases, feel free to add more or remove some
     shellAliases = {
       k = "kubectl";
