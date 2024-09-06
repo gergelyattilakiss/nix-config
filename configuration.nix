@@ -108,11 +108,20 @@
       just
       gnumake
       nix-output-monitor
+      pinentry-curses
+      gnupg
       ];
   };
-
+ 
   # Install firefox.
   programs.firefox.enable = true;
+  # !!!!!!!!!!!!! THIS PART IS NOT WORKING YET !!!!!!!!!!!!!!!  
+#  services.pcscd.enable = true;
+#  programs.gnupg.agent = {
+#   enable = true;
+#   pinentryPackage = "curses";
+#   enableSSHSupport = true;
+#  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
