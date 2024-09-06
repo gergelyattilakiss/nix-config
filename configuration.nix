@@ -13,6 +13,15 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
+  
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
+  
+  nix.settings.auto-optimise-store = true;
 
   networking.hostName = "xps-13"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -91,15 +100,19 @@
     packages = with pkgs; [
       git
       brave
+      firefox
       thunderbird
       vim
       wget
       curl
+      just
+      gnumake
+      nix-output-monitor
       ];
   };
 
   # Install firefox.
-  programs.firefox.enable = false;
+  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

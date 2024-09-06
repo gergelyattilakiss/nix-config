@@ -72,6 +72,12 @@
     zstd
     gnupg
     julia
+    python3
+    R
+    zoom-us
+    neovim
+    vscode-fhs
+    slack
     # nix related
     #
     # it provides the command `nom` works just like `nix`
